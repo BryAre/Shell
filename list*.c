@@ -15,13 +15,16 @@ list*
 
 int main(int argc, char const *argv[]) {
   int destfd;
-  int pid1, pid2, status;
+  int renameFile;
+  char filename[] = "t1.txt";
+  char newFilename[] = "tree.txt";
+  int pid1, pid2, pid3, status;
   errno = 0;
 
   //Open or create tree.txt file
-  destfd = open("tree.txt", O_WRONLY | O_CREAT, S_IRWXU);
+  destfd = open(filename, O_WRONLY | O_CREAT, S_IRWXU);
   if(-1 == destfd){
-    printf("\n open() tree.txt file failed with error [%s]\n",strerror(errno));
+    printf("\n open() t1.txt file failed with error [%s]\n",strerror(errno));
     return 1;
   }
 
@@ -38,9 +41,19 @@ int main(int argc, char const *argv[]) {
       execlp("ls", "ls", "-l", NULL); //execute ls -l;
       printf ("EXECVP Failed\n"); //print only if failed
     }
-    else{
+    else{ //parent
       waitpid(pid2, &status, 0); //wait for child process to finish
       close(destfd); //close file
+      pid3 = fork();
+      if (pid3==0) { //child forked
+        renameFile = rename(filename, newFilename);
+        if (renameFile != 0) {
+          printf("Renaming t1.txt to tree.txt failed\n");
+        }
+      }
+      else{ //parent
+        waitpid(pid3, &status, 0);//wait for child process to finish
+      }
     }
     waitpid(pid1, &status, 0); //wait for child process to finish
   }
