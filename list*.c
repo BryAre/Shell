@@ -1,6 +1,8 @@
 /*CSC 33200 Operating Systems - Group Project
 Alexandria Guo
-list*
+list*: this new command will clear the terminal screen and print a detailed list of all content of 
+the current directory (similar to ls -l) to the terminal and t1.txt. Finally, it will change the name of 
+text file to tree.txt. 
 */
 
 #include <sys/types.h>
