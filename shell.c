@@ -4,13 +4,21 @@
 #include <sys/wait.h>
 #include <string.h>
 
-void shell*();
+void shell_s();
+
+void tree_s();
+
+void exit_s();
+
+void path_s();
+
+void list_s();
 
 int main(int argc, char *argv[]){
-	shell*();
+	shell_s();
 }
 
-void shell*(){
+void shell_s(){
 	int child, status;
 	char input[100];
 
@@ -24,11 +32,11 @@ void shell*(){
 		child = fork();
 		if(child == 0){
 			if(strcmp(input, "tree") == 0)
-				tree*();
+				tree_s();
 			else if(strcmp(input, "list") == 0)
-				list*();
+				list_s();
 			else if(strcmp(input, "path") == 0)
-				path*();
+				path_s();
 			else{
 				printf("Command not found\n");
 				exit(0);
@@ -44,6 +52,6 @@ void shell*(){
 		}
 	}
 	
-	exit*();
+	exit_s();
 
 }
