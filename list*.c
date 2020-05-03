@@ -23,7 +23,7 @@ int main(int argc, char const *argv[]) {
   int pid1, pid2, status;
   errno = 0;
 
-  //Open or create tree.txt file
+  //Open or create t1.txt file
   destfd = open(filename, O_WRONLY | O_CREAT, S_IRWXU);
   if(-1 == destfd){
     printf("\n open() t1.txt file failed with error [%s]\n",strerror(errno));
