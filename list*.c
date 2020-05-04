@@ -18,8 +18,8 @@ text file to tree.txt.
 int main(int argc, char const *argv[]) {
   int destfd;
   int renameFile;
-  char filename[] = "t1.txt";
-  char newFilename[] = "tree.txt";
+  char filename[] = "./Dir0/t1.txt";
+  char newFilename[] = "./Dir0/tree.txt";
   int pid1, pid2, status;
   errno = 0;
 
