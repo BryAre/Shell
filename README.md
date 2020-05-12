@@ -1,4 +1,4 @@
-# CSC322-FinalProject
+# CSC332-FinalProject
 
 The object of this assignment is to gain experience with some advanced programming techniques like 
 process creation and control, file descriptors, signals and possibly pipes. To do this, a team of 5 students  
